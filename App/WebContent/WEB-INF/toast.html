@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <title>仿Toast</title>
+    <style type="text/css">
+      .toast { 
+          position: absolute; 
+          display: none;
+          left: 0px;
+          bottom: 100px;
+          width: 100%;
+          text-align: center;
+      }
+      .toast p {
+          border: 3px solid #aaa;
+          border-radius: 5px;
+          display: inline; 
+          margin: 0 auto;
+          padding: 10px;
+          color: #666;
+      }
+    </style>
+    <script language="javascript" type="text/javascript">
+      function showTime() {
+        var obj = document.getElementById("clock");
+        var date = new Date();
+        
+        obj.innerHTML = date.getFullYear()
+             + "-" + date.getMonth()
+             + "-" + date.getDate()
+             + " " + date.getHours()
+             + ":" + date.getMinutes()
+             + ":" + date.getSeconds()
+             ;
+        setTimeout("showTime()", 1000);
+      }
+      
+      function toast() {
+        document.getElementById("toast").style.display = "block";
+        setTimeout("removeToast()", 3000);
+      }
+      
+      function removeToast() {
+        document.getElementById("toast").style.display = "none";
+      }
+    </script>
+  <head>
+  
+  <body onload="showTime()">
+    <div id="clock">clock</div>
+    <input 
+        type="button" 
+        value="弹出Toast" 
+        onclick="toast()"
+        />
+    <div id="toast" class="toast">
+      <p>Toast信息正在显示</p>
+    </div>
+  </body>
+</html>
